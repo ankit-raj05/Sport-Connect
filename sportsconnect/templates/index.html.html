@@ -1,0 +1,5 @@
+{% macro card(c) %}<article class="card lift"><div class=ch>{% if c.photo %}<img class=av src="/uploads/photo/{{c.photo}}" alt="{{c.name}}">{% else %}<div class=av>{{c.name[0]}}</div>{% endif %}<div><h3><a class=stretch href="/coach/{{c.id}}">{{c.name}}</a> <span class=badge>{{i('shield',12)}} Verified</span></h3><small>{{c.sport}}</small></div></div>
+<div class=meta><span>{{i('pin')}} {{c.locality}}{{', ' if c.locality}}{{c.city}}</span><span>{{i('award')}} {{c.exp}} yrs</span><span>{{i('star')}} {{c.rating or 'New'}}{% if c.nrev %} ({{c.nrev}}){% endif %}</span></div>
+<div class=row style="justify-content:space-between"><span class=price>₹{{c.fee}}<small>/session</small></span><span class=row><span class="btn sm ghost">Profile</span><a class="btn sm" href="/coach/{{c.id}}#trial">Book trial</a></span></div></article>{% endmacro %}
+{% macro status(s) %}<span class="badge {{s}}">{{s|replace('_',' ')|capitalize}}</span>{% endmacro %}
+{% macro av(c, big=False) %}{% if c.photo %}<img class="av {{'big' if big}}" src="/uploads/photo/{{c.photo}}" alt="">{% else %}<div class="av {{'big' if big}}">{{c.name[0]}}</div>{% endif %}{% endmacro %}
